@@ -1,0 +1,161 @@
+@import '../../scss/_variables.scss';
+
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: $white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+
+  @media (max-width: 768px) {
+    width: 80%;
+    padding: 20px;
+  }
+
+  @media (max-width: 480px) {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.2s;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    fill: #333;
+
+    &:hover {
+      fill: $background;
+    }
+
+    @media (max-width: 768px) {
+      width: 18px;
+      height: 18px;
+    }
+
+    @media (max-width: 480px) {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  img {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  h1 {
+    color: #333;
+    font-family: Proxima Nova, sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 1%;
+  }
+
+  p {
+    color: #666;
+    font-family: Proxima Nova, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 8px 0;
+  }
+
+  @media (max-width: 1200px) {
+    img {
+      width: 200px;
+      height: 200px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: 160px;
+      height: 160px;
+    }
+
+    h1 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    img {
+      width: 120px;
+      height: 120px;
+    }
+
+    h1 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+.moreInfo {  
+  color: #333;
+  font-family: Proxima Nova, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 1%;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: $background;
+  }
+}

@@ -1,0 +1,44 @@
+@import './components/all.scss';
+@import './_variables.scss';
+@import './libs/_normolize.scss';
+
+body {
+  background-color: $background;
+}
+
+.wrapper {
+  width: calc(100vw - 100px);
+  height: 100%;
+  background-color: #fff;
+  margin: 50px auto;
+  padding: 20px 20px;
+  border-radius: 10px;
+  padding: 38px;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+}
+
+.sort-conteiner {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+
+    @media (max-width: 480px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+  }
+}
+
+.content-title {
+
+    @media (max-width: 768px) {
+      margin-top: 15px;
+    }
+
+}
+

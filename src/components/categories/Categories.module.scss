@@ -1,0 +1,65 @@
+@import '../../scss/_variables.scss';
+
+.root {
+   display: flex;
+   overflow-x: auto;
+   ul {
+      display: flex;
+      flex-direction: row;
+
+      li {
+         font-family: 'Proxima Nova', sans-serif;
+         font-size: 16px;
+         font-weight: 700;
+         line-height: 19px;
+         background-color: $white;
+         padding: 13px 30px;
+         border-radius: 30px;
+         margin-right: 10px;
+         font-weight: bold;
+         cursor: pointer;
+         transition: background-color 0.1s ease-in-out;
+
+         &:hover {
+            background-color: $black;
+            color: $background;
+            transition: 0.5s ease-in-out;
+         }
+
+         &:active {
+            text-decoration: underline;
+         }
+      }
+
+      @media (max-width: 1024px) {
+         li {
+            margin-right: 0;
+            padding: 13px 16px;
+         }
+      }
+
+      @media (max-width: 768px) {
+         overflow-x: auto; 
+         width: 95%;
+      }
+
+      @media (max-width: 480px) {
+         overflow-x: auto; 
+         width: 303px;
+
+         li {
+           font-size: 13px;
+           line-height: 11px;
+           padding: 12px 8px;
+         }
+      }
+   }
+}
+
+.active {
+   color: $background;
+}
+
+.notActive {
+   color: $black;
+}

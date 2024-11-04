@@ -1,0 +1,147 @@
+@import '../../scss/variables.scss';    
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 72vh;
+
+       @media (max-width: 480px) {
+            height: 70vh;
+       }
+}
+
+.pizzaWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    height: 600px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: $black;
+        font-family: Proxima Nova;
+        font-size: 20px;
+        font-weight: 800;
+        text-align: center;
+        letter-spacing: 1%;
+        height: 42px;
+    }
+
+      @media (max-width: 1200px) {
+        
+        img {
+            width: 280px;
+            height: 280px;
+        }
+
+        h1 {
+            font-size: 18px;
+            height: 36px;
+        }
+      }
+
+    @media (max-width: 1024px) {
+
+        img {
+            width: 240px;
+            height: 240px;
+        }
+
+        h1 {
+            font-size: 16px;
+            height: 32px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        height: 450px;
+        width: 450px;   
+        img {
+            width: 180px;
+            height: 180px;
+        }
+
+        h1 {
+            font-size: 15px;
+            height: 28px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        height: 350px;
+        width: 350px;
+
+        img {
+            width: 120px;
+            height: 120px;
+        }
+
+        h1 {
+            font-size: 14px;
+            height: 24px;
+        }
+    }
+}
+
+.description {
+    color: $black;
+    width: 520px;
+    font-family: Proxima Nova, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 8px 0;
+
+    @media (max-width: 1200px) {
+        width: 400px;
+        font-size: 16px;
+    }
+
+    @media (max-width: 1024px) {
+        width: 320px;
+        font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+        width: 240px;
+        font-size: 13px;
+    }
+
+    @media (max-width: 480px) {
+        text-align: center;
+        width: 180px;
+        font-size: 12px;
+    }
+}
+
+.price {
+    font-family: Proxima Nova;
+    font-size: 25px;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 1%;
+    margin-top: 40px;
+    color: rgb(0, 0, 0);
+
+    @media (max-width: 1200px) {
+        font-size: 20px;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 17px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 16px;
+    }
+}

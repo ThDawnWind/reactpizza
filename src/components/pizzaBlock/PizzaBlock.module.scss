@@ -1,0 +1,226 @@
+@import '../../scss/_variables.scss';
+
+.pizzaContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 280px;
+  height: 465px;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+
+  img {
+    width: 100%;
+    max-width: 259px;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+        transform: scale(1.02);
+    }
+
+    @media (max-width: 768px) {
+        min-width: 210px;
+    }
+    
+    @media (max-width: 480px) {
+        min-width: 190px;
+    }
+  }
+
+  h4 {
+    color: rgb(0, 0, 0);
+    font-family: Proxima Nova;
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 1%;
+    height: 42px;
+    cursor: pointer; 
+  }
+
+  @media (max-width: 1200px) {
+    height: 423px;
+
+    h4 {
+        font-size: 18px;
+    }
+  }
+}
+
+
+.pizzaType {
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 6px;
+   
+
+    ul {
+        display: flex;
+        flex-direction: row;  
+        gap: 6px;
+         background-color: $gray-line;
+
+        li {
+            font-family: Proxima Nova;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            padding: 8px;
+            flex: 1;
+            cursor: pointer;
+            &:hover {
+                background: $black;
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+                border-radius: 5px;
+                color: $background;
+                cursor: pointer;
+                transition: 0.7s;
+            }
+
+            &.active {
+                background: $black;
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+                border-radius: 5px;
+                color: $white;
+                cursor: pointer;
+                transition: 0.7s;
+            }
+        }
+    }
+
+      @media (max-width: 768px) {
+        padding: 0;
+      }
+}
+
+.pizzaSize {
+    ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background-color: $gray-line;
+        li {
+            padding: 8px;
+            color: rgb(44, 44, 44);
+            font-family: Proxima Nova;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            &:hover {
+                background: $black;
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+                border-radius: 5px;
+                color: $white;
+                cursor: pointer;
+                transition: 0.7s;
+            }
+
+            &.active {
+            background: $black;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+            border-radius: 5px;
+            color: $white;
+            cursor: pointer;
+            transition: 0.7s;
+            }
+        }
+    }
+}
+
+.pizzaBlockBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    gap: 41px;
+
+    button {
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+    }
+
+
+
+    @media (max-width: 1200px) {
+        gap: 36px;
+    }
+    @media (max-width: 1024px) {
+        gap: 20px;
+    }
+    @media (max-width: 768px) {
+        margin-top: 7px;
+        gap: 35px;
+    }
+}
+       
+.pizzaPrice {
+    color: $black;
+    font-family: Proxima Nova;
+    font-size: 22px;
+    font-weight: 700;
+    text-align: left;
+
+    @media (max-width: 1200px) {
+        font-size: 14px;
+    }
+}
+
+.pizzaBtn {
+    width: 135px;
+    height: 37px;
+    border-radius: 30px;
+    background: $white;
+   &:hover {
+        background: $black;
+        cursor: pointer;
+        transition: 0.7s;
+    }
+
+    span {
+        color: $background;
+        font-family: Proxima Nova;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 19px;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+i {
+      display: inline-block;
+      border-radius: 30px;
+      background-color: $background;
+      color: #fff;
+      font-weight: 600;
+      width: 22px;
+      height: 22px;
+      font-style: normal;
+      font-size: 13px;
+      line-height: 22px;
+      position: relative;
+      top: -1px;
+      left: 3px;
+}
+}
+
+.active {
+    color: $background;
+}
+.notActive {
+    color: $black;
+}

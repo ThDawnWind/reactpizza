@@ -1,0 +1,107 @@
+@import '../../scss/_variables.scss';
+
+.root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    img.logoPicture {
+      margin-right: 15px;
+    }
+
+    h1 {
+      margin: 0;
+      color: rgb(24, 24, 24);
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 29px;
+      letter-spacing: 1%;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0;
+      font-family: Proxima Nova;
+      font-size: 16px;
+      font-weight: 400;
+      font-size: 14px;
+      color: gray;
+    }
+         @media (max-width: 480px) {
+          h1 {
+            font-size: 18px;
+          }
+         }
+  }
+  
+  .cart_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $background;
+    padding: 10px;
+    width: 150px;
+    border-radius: 7px;
+    cursor: pointer;
+
+    &:active {
+      padding: 10px 12px 10px 12px;
+    }
+
+     @media (max-width: 480px) {
+        flex-direction: column;
+        align-items: center;
+        width: 90px;
+    }
+
+    .total {
+      font-family: Proxima Nova;
+      font-size: 16px;
+      font-weight: 700;
+      margin-right: 10px;
+      color: $white;  
+
+      @media (max-width: 480px) {
+        font-size: 12px;
+    }
+  }
+    .contain {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cartIcon {
+      width: 25px;
+      height: 25px;
+      fill: $white; 
+       @media (max-width: 480px) {
+        width: 20px;
+        height: 20px;
+        fill: $white;
+       }
+    }
+
+    .count {
+      font-family: Proxima Nova;
+      font-size: 16px;
+      font-weight: 700;
+      margin-left: 7px;
+      color: $white;
+      padding: 2px 6px;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 480px) {
+          font-size: 11px;
+          flex-direction: column;
+          align-items: center;
+          padding: 10px;
+    }
+  }
+}

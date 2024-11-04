@@ -1,0 +1,46 @@
+@import '../../scss/_variables.scss';
+
+.root {
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+
+    a {
+      display: inline-block;
+      text-align: center;
+      height: 45px;  
+      width: 45px;
+      line-height: 42px;
+      border: 1px solid $background;
+      border-radius: 30px;
+      margin-right: 10px;
+      cursor: pointer;
+      color: $background;
+
+    &:active {
+      height: 42px;
+      width: 42px;
+    }
+    
+    &:hover {
+        background-color: $background;
+        color: $white;
+      }
+    }
+  }
+
+  .active {
+    a {
+      background-color: $background;
+      color: $white;
+    }
+  }
+}

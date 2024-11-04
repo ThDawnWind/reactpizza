@@ -1,0 +1,187 @@
+@import '../../scss/variables.scss';
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px;
+  border-bottom: 1px solid #f3f3f3;
+
+    @media (max-width: 480px) {
+      padding: 10px;
+    }
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    min-width: 350px;
+
+       @media (max-width: 768px) {
+        min-width: 318px;
+       }
+        @media (max-width: 480px) {
+          min-width: 153px;
+        }
+}
+
+.itemImage img {
+  width: 80px;
+  height: 80px;
+
+      @media (max-width: 768px) {
+        width: 70px;
+        height: 70px;
+      }
+       @media (max-width: 480px) {
+        width: 26px;
+        height: 26px;
+       }
+}
+
+.info {
+    margin-left: 15px;
+    h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    p {
+      font-size: 14px;
+      color: #777;
+    }
+      @media (max-width: 768px) {
+        h3 {
+          font-size: 16px;
+        }
+        p {
+          font-size: 12px;
+        }
+      }
+       @media (max-width: 480px) {
+        margin-left: 10px;
+        h3 {
+          font-size: 8px;
+        }
+        p {
+          font-size: 7px;
+        }
+       }
+
+}
+
+.count {
+  display: flex;
+  align-items: center;
+}
+
+.count button {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 0 10px;
+
+   &:hover {
+      background-color: $background;
+      color: $white;
+  }
+
+  &:active {
+    width: 28px;
+    height: 28px;
+  }
+
+      @media (max-width: 768px) {
+        width: 18px;
+        height: 18px;
+        font-size: 14px;
+        margin: 0 5px;
+      }
+       @media (max-width: 480px) {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+        margin: 0 2px;
+       }
+}
+
+.count b {
+  font-size: 16px;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+    @media (max-width: 480px) {
+      font-size: 8px;
+    }
+}
+
+
+.price b {
+  font-size: 18px;
+  color: #333;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+   @media (max-width: 480px) {
+    font-size: 9px;
+  }
+}
+
+.remove button {
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 50%; 
+  width: 30px; 
+  height: 30px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  
+     @media (max-width: 768px) {
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+      }
+      @media (max-width: 480px) {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+    }
+
+  &:active {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.remove {
+
+  &:hover {
+    fill: $background;
+  }
+  svg {
+    width: 12px; 
+    height: 12px;
+    transform: rotate(45deg);
+
+    @media (max-width: 768px) {
+      width: 8px;
+      height: 8px;
+    }
+    @media (max-width: 480px) {
+      width: 6px;
+      height: 6px;
+    }
+  }
+}
