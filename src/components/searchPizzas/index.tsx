@@ -1,23 +1,24 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { setSearch } from '../categories/categoryFilterSlice';
+import { useAppDispatch} from '../../redux/store';
 import { ReactComponent as SearchSvg } from '../../assets/img/search_icon.svg';
 import _ from 'lodash';
 
 import styles from './SearchPizzas.module.scss';
 
 export const SearchPizzas = () => {
-  const dispatch = useDispatch();
-  const [searchValue, setSearchValue] = React.useState('');
+  const dispatch = useAppDispatch();
+  const [searchValue, setSearchValue] = React.useState<string>('');
 
-  const debouncedSearch = React.useCallback(
-    _.debounce((value) => {
+
+  const debouncedSearch: (value: string) => void = React.useCallback(
+    _.debounce((value: string) => {
       dispatch(setSearch(value));
     }, 1500),
     [dispatch]
   );
 
-  const onChangeInput = (e) => {
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
     debouncedSearch(e.target.value);
   };

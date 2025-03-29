@@ -2,8 +2,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { fadeIn } from 'react-animations';
 import styled, { keyframes } from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useAppDispatch,  RootState} from '../../redux/store';
 import { CartItem } from '../../components/cartItem';
 import { clearCart } from './cartSlice';
 import { calcTotalPrice } from '../../utils/CalcTotalPrice';
@@ -20,9 +21,9 @@ const FadeInDiv = styled.div`
 `;
 
 export const Cart = () => {
-  const { items } = useSelector((state) => state.cart);
-  const totalCount = useSelector(state => state.cart.totalCount);
-  const dispatch = useDispatch();
+  const items = useSelector((state: RootState) => state.cart.items);
+  const totalCount: number = useSelector((state: RootState) => state.cart.totalCount);
+  const dispatch = useAppDispatch();
 
   React.useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(items));
@@ -71,8 +72,6 @@ export const Cart = () => {
               type={item.type}
               size={item.size}
               count={item.count}
-              totalPrice={item.totalPrice}
-              totalCount={item.totalCount}
             />
           ))} 
         </FadeInDiv>
@@ -91,11 +90,11 @@ export const Cart = () => {
             <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
             </svg>
-            <span>Вернуться назад</span>
+            <span>Назад</span>
           </button>
         </Link>
         <button className={styles.pay}>
-          <span>Оплатить сейчас</span>
+          <span>Оплатить</span>
         </button>
       </div>
     </div>

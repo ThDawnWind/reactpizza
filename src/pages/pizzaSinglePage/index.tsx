@@ -1,15 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
+import {RootState} from '../../redux/store';
 
 import styles from './PizzaSinglePage.module.scss';
 
 export const PizzaSinglePage = () => {
-    const { items} = useSelector((state) => state.pizzas); 
-    const { id } = useParams();
+    const pizzas = useSelector((state: RootState) => state.pizzas.items); 
+    const { id } = useParams<{id: string}>();
     const navigate = useNavigate();
     
-    const pizza = items.find(p => p.id === parseInt(id))
+   const pizza = React.useMemo(() => {
+    return pizzas.find((p) => p.id === Number(id));
+  }, [pizzas, id]);
 
     React.useEffect(() => {
             if (pizza === undefined) {

@@ -14,6 +14,7 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
 
+
   img {
     width: 100%;
     max-width: 259px;
@@ -80,6 +81,7 @@
             padding: 8px;
             flex: 1;
             cursor: pointer;
+            
             &:hover {
                 background: $black;
                 box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);

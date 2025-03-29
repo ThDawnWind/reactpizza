@@ -1,22 +1,30 @@
-import React from "react";
 import { useDispatch} from 'react-redux';
-import { removeItem , decrementItem, addItem} from "../../pages/cart/cartSlice";
+import { removeItem , decrementItem, incrementItem} from "../../pages/cart/cartSlice";
 
 import styles from './CartItem.module.scss';
 
-export const CartItem = ({ id, title, price, imageUrl, type, size, count, totalPrice, totalCount}) => {
+interface CartItemProps {
+  id: number;
+  title: string;
+  price: number;
+  imageUrl: string;
+  type: string;
+  size: number;
+  count: number;
+}
+export const CartItem = ({ id, title, price, imageUrl, type, size, count}: CartItemProps) => {
    const dispatch = useDispatch();
 
-   const decrementCount = () => {
+   const decrementCount = (id: number): void => {
      if (count > 1) {
        dispatch(decrementItem({ id }));
      }
    };
    
-   const incrementCount = () => {
-     dispatch(addItem({ id }));
+   const incrementCount = (id: number): void => {
+     dispatch(incrementItem({ id }));
    };
-   const removeItemFromCart = () => {
+   const removeItemFromCart = (id: number): void => {
      dispatch(removeItem({ id }));
    };
 

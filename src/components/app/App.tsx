@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { HelmetProvider} from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { Home } from '../../pages';
+import { Home } from '../../pages/Home';
 import { MainLayOut } from '../../layouts/MainLayOut';
 import { Skeleton } from '../skeleton';
 

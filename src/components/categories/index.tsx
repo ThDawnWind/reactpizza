@@ -1,23 +1,22 @@
 import React from 'react';
-import { useDispatch } from 'react-redux'; // Импорт useDispatch
 import { setCategoryId } from './categoryFilterSlice';
-import { setCurrentPage } from '../categories/categoryFilterSlice';
+import { setCurrentPage } from './categoryFilterSlice';
+import { useAppDispatch} from '../../redux/store';
 
 import styles from './Categories.module.scss';
 
 export const Categories = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const dispatch = useDispatch();
-
+  const dispatch = useAppDispatch();
   
-  const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+  const categories: string[] = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
-  const handleCategoryClick = React.useCallback((index) => {
+  const handleCategoryClick = React.useCallback((index: number) => {
     setActiveIndex(index);
     const categoryId = index === 0 ? null : index; 
     dispatch(setCategoryId(categoryId)); 
     dispatch(setCurrentPage(1));
-  }, [activeIndex]);
+  }, [dispatch]);
 
   return (
     <div className={styles.root}>

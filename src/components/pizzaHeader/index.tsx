@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { calcTotalPrice } from '../../utils/CalcTotalPrice';
-import { SearchPizzas } from '../../components/searchPizzas';
+import { SearchPizzas } from '../searchPizzas';
+import { RootState } from '../../redux/store';
 
 import logoSvg from '../../assets/img/pizza_logo.svg';
 import { ReactComponent as CartSvg } from '../../assets/img/cart.svg';
@@ -9,9 +10,9 @@ import { ReactComponent as CartSvg } from '../../assets/img/cart.svg';
 import styles from './PizzaHeader.module.scss';
 
 export const PizzaHeader = () => {
-  const totalCount = useSelector(state => state.cart.totalCount);
+  const totalCount = useSelector((state: RootState) => state.cart.totalCount);
   const location = useLocation();
-  const { items } = useSelector((state) => state.cart);
+  const { items } = useSelector((state: RootState) => state.cart);
 
   return (
     <div className={styles.root}>

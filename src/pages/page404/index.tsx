@@ -1,6 +1,6 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+
 import styles from './Page404.module.scss';
 
 export const Page404 = () => {

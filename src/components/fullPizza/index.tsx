@@ -5,19 +5,37 @@ import styled, { keyframes } from 'styled-components';
 
 import styles from './FullPizza.module.scss';
 
+interface IPizza {
+  id: number;
+  imageUrl: string;
+  title: string;
+  types: number[];
+  sizes: number[];
+  price: number;
+  category: number;
+  rating: number;
+  description: string;
+}
+
+interface IModal {
+  show: boolean;
+  onClose: () => void;
+  pizza: IPizza | null;
+}
+
   const fadeInAnim = keyframes`${fadeIn}`;
   
   const FadeInDiv = styled.div`
   animation: 0.9s ${fadeInAnim};
   `;
 
-export const Modal = ({ show, onClose, pizza }) => {
-  const modalRef = React.useRef();
+export const Modal = ({ show, onClose, pizza } : IModal) => {
+  const modalRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const clickOutside = (e) => {
+    const clickOutside = (e: MouseEvent) => {
 
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
         onClose();
       }
     }
@@ -33,8 +51,9 @@ export const Modal = ({ show, onClose, pizza }) => {
 
   if (!show) return null;
 
-  return (
-    <div className={styles.root}>
+  if (pizza !== null) {
+      return (
+      <div className={styles.root}>
       <FadeInDiv>
         <div className={styles.modal} ref={modalRef}>
             <button className={styles.closeBtn} onClick={onClose}>
@@ -65,5 +84,7 @@ export const Modal = ({ show, onClose, pizza }) => {
       </FadeInDiv>
     </div>
   );
+  }
+
 };
 

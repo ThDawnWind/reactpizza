@@ -29,7 +29,7 @@
     margin-bottom: 20px;
 
         @media (max-width: 480px) {
-          height: 15px;
+          height: 13px;
         }
 }
 
@@ -105,7 +105,7 @@
           height: 15px;
         }
         button {
-            font-size: 11px;
+            font-size: 9px;
             height: 16px;
         }
      }
@@ -115,6 +115,11 @@
     width: 29px;
     height: 29px;
     fill: $gray-line;
+
+      @media (max-width: 480px) {
+        width: 15px;
+        height: 15px;
+      }
 }
 
 
@@ -128,7 +133,7 @@
        }
 
        @media (max-width: 480px) {
-        font-size: 13px;
+        font-size: 11px;
        }
 }
 
@@ -148,7 +153,7 @@
   border: 1px solid transparent;
 
         span {
-            color: rgb(202, 202, 202);
+            color: rgb(0, 0, 0);
             font-family: Proxima Nova;
             font-size: 16px;
             font-weight: 400;
@@ -184,10 +189,12 @@
                   }
                }
                @media (max-width: 480px) {
+                      height: 35px;
+                      width: 35px;
                     padding: 5px 10px;
 
                     span {
-                        font-size: 13px;
+                        font-size: 9px;
                     }
               }
 }
@@ -228,10 +235,11 @@
       }
 
       @media (max-width: 480px) {
-        padding: 5px 10px;
+        height: 35px;
+        width: 35px;
 
         span {
-          font-size: 13px;
+          font-size: 11px;
         }
       }
 

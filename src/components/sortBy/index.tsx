@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { fadeIn} from 'react-animations';
 import styled, { keyframes } from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch} from '../../redux/store';
 import { setRating, setOrder } from '../categories/categoryFilterSlice';
 
 import styles from './SortBy.module.scss';
 
-const sortOptions = [
+type Label = 'популярности' | 'цене' | 'алфавиту'; 
+type Order = 'asc' | 'desc';
+type Value = 'rating' | 'price' | 'title';
+
+interface ISortOptions {
+  label: Label;
+  value: Value;
+  order: Order;
+}
+const sortOptions: ISortOptions[] = [
   { label: 'популярности', value: 'rating', order: 'desc' },
   { label: 'цене', value: 'price', order: 'asc' },
   { label: 'алфавиту', value: 'title', order: 'asc' }
@@ -19,11 +28,11 @@ const sortOptions = [
   `;
 
 export const SortBy = () => {
-  const [selectedSort, setSelectedSort] = useState('rating'); 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dispatch = useDispatch();
+  const [selectedSort, setSelectedSort] = React.useState<string>('rating'); 
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
-  const handleSortChange = (sortOption) => {
+  const handleSortChange = (sortOption: ISortOptions) => {
     setSelectedSort(sortOption.value);
     setIsDropdownOpen(false);
     dispatch(setRating(sortOption.value)); 

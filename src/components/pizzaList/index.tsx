@@ -1,8 +1,10 @@
 import React from 'react';
 import { fadeIn} from 'react-animations';
 import styled, { keyframes } from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentPage } from '../categories/categoryFilterSlice';
+import { useSelector } from 'react-redux';
+import { useAppDispatch} from '../../redux/store';
+import { setCurrentPage, selectFilter } from '../categories/categoryFilterSlice';
+import { selectPizzas, selectPizzaStatus } from './pizzaListSlice';
 import { fetchPizzas } from '../../services/pizzasApi';
 import { PizzaBlock } from '../pizzaBlock';
 import { Skeleton } from '../skeleton';
@@ -11,6 +13,7 @@ import { Modal } from '../fullPizza';
 
 import styles from './PizzaList.module.scss';
 
+
   const fadeInAnim = keyframes`${fadeIn}`;
   
   const FadeInDiv = styled.div`
@@ -18,15 +21,28 @@ import styles from './PizzaList.module.scss';
   `;
 
 export const PizzaList = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   
-  const { items, status } = useSelector((state) => state.pizzas);  
-  const { categoryId, rating, order, currentPage, search } = useSelector((state) => state.categoryFilter);
+ const items = useSelector(selectPizzas);
+ const status = useSelector(selectPizzaStatus);
+ const filterState = useSelector(selectFilter);
 
-  const [showModal, setShowModal] = React.useState(false);
-  const [selectedPizza, setSelectedPizza] = React.useState(null);
+  const { categoryId, rating, order, currentPage, search } = filterState;
+  const [showModal, setShowModal] = React.useState<boolean>(false);
+  const [selectedPizza, setSelectedPizza] = React.useState<IPizza | null>(null);
 
-  const handlePizzaClick = (pizza) => {
+  interface IPizza {
+    id: number;
+    imageUrl: string;
+    title: string;
+    types: number[];
+    sizes: number[];
+    price: number;
+    category: number;
+    rating: number;
+    description: string;
+  }
+  const handlePizzaClick = (pizza: IPizza) => {
     setSelectedPizza(pizza);
     setShowModal(true);
   };
@@ -36,32 +52,44 @@ export const PizzaList = () => {
     setSelectedPizza(null);
   };
 
-  const params = React.useMemo(() => ({
-    sortBy: rating,
-    category: categoryId === 0 ? null : categoryId,
-    order: order,
-    currentPage: currentPage,
+ type OrderType = 'asc' | 'desc';
+
+interface IFetchPizzasParams {
+  sortBy: string;
+  category: number | null;
+  order: OrderType;
+  currentPage: number;
+  limit: number;
+  search: string;
+}
+
+const params: IFetchPizzasParams = React.useMemo(() => {
+  const validOrder = order === 'asc' || order === 'desc' ? order : 'asc';
+  
+  return {
+    sortBy: String(rating), 
+    category: categoryId || null, 
+    order: validOrder,
+    currentPage,
     limit: 4,
-    search: search     
-  }), [categoryId, rating, order, currentPage, search]);
+    search
+  };
+}, [categoryId, rating, order, currentPage, search]); 
 
 
-  React.useEffect(() => {
-    dispatch(fetchPizzas(params)); 
-  }, [params, dispatch]);
-
-  const onPageChange = (page) => {
+  const onPageChange = (page: number) => {
     dispatch(setCurrentPage(page));
   };
 
-  
-
-  React.useEffect(() => {
-  if (currentPage === 0) {
+React.useEffect(() => {
+  if (currentPage < 1) {
     dispatch(setCurrentPage(1));
   }
-}, [dispatch, categoryId, currentPage, rating, order, search]);
+}, [currentPage]);
 
+React.useEffect(() => {
+  dispatch(fetchPizzas(params));
+}, [params]);
 
   const skeletons = [...new Array(4)].map((_, index) => <Skeleton key={index} />);
 
@@ -97,5 +125,4 @@ export const PizzaList = () => {
     <Pagination currentPage={currentPage} onPageChange={onPageChange} />
   </>
 );
-
 };
