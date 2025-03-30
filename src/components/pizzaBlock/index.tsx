@@ -70,7 +70,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({ id, title, price, imageU
       </div>
       <div className={styles.pizzaBlockBtn}>
         <div className={styles.pizzaPrice}>от {price} ₽</div>
-        <button disabled={sizes.length === 0 || types.length === 0} onClick={onClickAdd} className={`button`}>
+          <button disabled={activeType === undefined || activeSize === undefined} onClick={onClickAdd} className={`button`}>
           <span>+ Добавить</span>
           {addedCount > 0 && <i>{addedCount}</i>}
         </button>
